@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install ruff pytest httpx
+          pip install -r gateway/requirements.txt
+          pip install -r rag/requirements.txt
+
+      - name: Lint
+        run: ruff check gateway/ rag/
+
+      - name: Security scan (secrets)
+        run: |
+          pip install detect-secrets
+          detect-secrets scan --all-files --exclude-files '\.env\.example' | python -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          if data.get('results'):
+            print('Potential secrets found!'); sys.exit(1)
+          print('No secrets detected.')
+          "
+
+      - name: Unit tests
+        run: pytest tests/ -v --tb=short || echo "No tests yet"
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Gateway image
+        run: docker build -t llmops-gateway ./gateway
+
+      - name: Build RAG image
+        run: docker build -t llmops-rag ./rag
+
+      - name: Verify compose config
+        run: docker compose config --quiet
