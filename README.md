@@ -43,6 +43,23 @@ Production-grade MLOps/LLMOps infrastructure lab — LLM Gateway, RAG Pipeline, 
 └──────────────────────────────────────────────────────────────────┘
 ```
 
+
+```mermaid
+graph TD
+    Client[Client / User] --> Gateway[LLM Gateway - FastAPI]
+    Gateway --> Security[AI Security Layer]
+    Gateway --> RAG[RAG Service]
+    Gateway --> LLM[LLM Backend]
+    Security --> |Prompt Guard, PII Filter| Gateway
+    RAG --> pgvector[(pgvector)]
+    LLM --> Ollama[Ollama - Local]
+    LLM --> vLLM[vLLM - GPU]
+    Gateway --> Observability[Observability Stack]
+    Observability --> Prometheus[Prometheus]
+    Observability --> Grafana[Grafana]
+```
+
+
 ---
 
 ## 📁 Project Structure
