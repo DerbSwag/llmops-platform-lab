@@ -1,4 +1,4 @@
-# 🧠 LLMOps Platform Lab
+﻿# 🧠 LLMOps Platform Lab
 
 Production-grade MLOps/LLMOps infrastructure lab — LLM Gateway, RAG Pipeline, AI Security, and Observability.
 
@@ -13,6 +13,19 @@ Production-grade MLOps/LLMOps infrastructure lab — LLM Gateway, RAG Pipeline, 
 
 ---
 
+
+## 📈 Results
+
+| Metric | Value |
+|--------|-------|
+| LLM Gateway | Multi-provider routing (OpenAI, Ollama, etc.) |
+| RAG Pipeline | Document ingestion + vector search + generation |
+| AI Security | Prompt Guard + input/output scanning |
+| Monitoring | Prometheus + Grafana dashboards for LLM metrics |
+| Stack | Full Docker Compose orchestration (one command) |
+| Security scanning | Blocks prompt injection + data leakage |
+
+---
 ## 🏗️ Architecture
 
 ```text
