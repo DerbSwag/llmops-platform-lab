@@ -28,7 +28,7 @@ jobs:
       - name: Security scan (secrets)
         run: |
           pip install detect-secrets
-          detect-secrets scan --all-files --exclude-files '\.env\.example' | python -c "
+          detect-secrets scan --all-files --exclude-files '\.env\.example|\.env' | python -c "
           import json, sys
           data = json.load(sys.stdin)
           if data.get('results'):
@@ -51,4 +51,6 @@ jobs:
         run: docker build -t llmops-rag ./rag
 
       - name: Verify compose config
-        run: docker compose config --quiet
+        run: |
+          cp .env.example .env
+          docker compose config --quiet
