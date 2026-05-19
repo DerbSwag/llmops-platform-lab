@@ -4,7 +4,7 @@ import time
 from contextlib import asynccontextmanager
 
 import httpx
-from fastapi import FastAPI, HTTPException, UploadFile
+from fastapi import FastAPI, HTTPException
 from prometheus_client import Counter, Histogram, generate_latest
 from pydantic import BaseModel
 from sentence_transformers import SentenceTransformer
