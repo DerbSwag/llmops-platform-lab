@@ -1,8 +1,10 @@
 ﻿# 🧠 LLMOps Platform Lab
 
-Production-grade MLOps/LLMOps infrastructure lab — LLM Gateway, RAG Pipeline, AI Security, and Observability.
+Hands-on LLMOps learning lab for practicing LLM gateway, RAG pipeline, AI security concepts, and observability patterns.
 
-> 🎯 **Purpose:** Demonstrate end-to-end AI infrastructure skills for DevSecOps (AI-Ready) roles.
+> **Purpose:** Practice AI infrastructure concepts for DevSecOps and AI-ready operations roles.
+
+> **Scope note:** This is a learning lab, not a production system. It demonstrates realistic patterns for experimentation, documentation, and portfolio review.
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
